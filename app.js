@@ -1,5 +1,7 @@
 const express = require(`express`);
 const bodyparser = require(`body-parser`);
+const mongoose = require(`mongoose`);
+
 
 const app = express();
 
@@ -13,5 +15,8 @@ app.use((req, res, next) => {
 });
 
 
-
-app.listen(8080);
+mongoose.connect(`mongodb+srv://macbook:macbook@cluster0.fba8o.mongodb.net/test`)
+.then(result=> {
+    app.listen(8080);
+})
+.catch(err => console.log(err));
