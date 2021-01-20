@@ -2,6 +2,7 @@ const express = require(`express`);
 const bodyparser = require(`body-parser`);
 const mongoose = require(`mongoose`);
 
+const authRoutes = require(`./routes/auth`);
 
 const app = express();
 
@@ -13,6 +14,8 @@ app.use((req, res, next) => {
     res.setHeader(`Access-Control-Allow-Headers`, `Content-Type, Authorization`);
     next();
 });
+
+app.use(`/auth`, authRoutes);
 
 
 mongoose.connect(`mongodb+srv://macbook:macbook@cluster0.fba8o.mongodb.net/test`)
