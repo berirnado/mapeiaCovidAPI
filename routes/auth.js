@@ -8,24 +8,20 @@ const User = require(`../models/user`);
 const router = express.Router();
 
 router.put(`/signup`, [
-    body(`email`)
-        .isEmail()
-        .withMessage(`Please enter a valid email.`)
+    body(`phone`)
         .custom((value, {req}) => {
-            return User.findOne({email: value}).then(userDoc => {
+            return User.findOne({phone: value}).then(userDoc => {
                 if (userDoc) {
-                    return Promise.reject(`E-Mail address already exists!`);
+                    return Promise.reject(`Telefone já utilizado!`);
                 }
             })
-        })
-        .normalizeEmail(),
-    body(`password`)
-        .trim()
-        .isLength({min: 5}),
-    body(`name`)
+        }),
+    body(`username`)
         .not()
         .isEmpty(),
-
+    body(`idade`)
+        .not()
+        .isEmpty()
 ],userController.signup);
 
 module.exports = router;
