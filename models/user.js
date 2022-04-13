@@ -6,13 +6,9 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    latitude: {
-        type: String,
+    latlng: {
+        type: Array,
         required: true
-    },
-    longitude: {
-        type: String,
-        required: true,
     },
     genero: {
         type: String,

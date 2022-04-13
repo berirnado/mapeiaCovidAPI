@@ -3,6 +3,7 @@ const bodyparser = require(`body-parser`);
 const mongoose = require(`mongoose`);
 
 const authRoutes = require(`./routes/auth`);
+const crudRoutes = require('./routes/crud')
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use((req, res, next) => {
 });
 
 app.use(`/auth`, authRoutes);
+app.use(`/crud`, crudRoutes);
 
 app.use((error, req, res, next) => {
     console.log(error);

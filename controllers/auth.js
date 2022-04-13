@@ -16,6 +16,7 @@ exports.signup = (req, res, next) => {
     const birthday = req.body.birthday
     const latitude = req.body.latitude
     const longitude = req.body.longitude
+    const latlng = [latitude, longitude]
 
     console.log(latitude)
     console.log(longitude)
@@ -23,8 +24,7 @@ exports.signup = (req, res, next) => {
     
     const user = new User({
         phone: phone,
-        latitude: latitude,
-        longitude: longitude,
+        latlng: latlng,
         genero: genero,
         birthday: birthday,
     });
@@ -40,3 +40,29 @@ exports.signup = (req, res, next) => {
     })
 
 };
+
+exports.login = (req, res, next) => {
+    User.findOne({
+        phone: req.body.phone
+      }).catch(err => console.log(err))
+        if (!User) {
+            return res.send(500).message('Usuario nao encontrado')
+        } else {
+            return res.status(200).send({
+                id: User._id,
+                phone: User.phone,
+              });
+        }
+}
+
+exports.ListLatLng = (req, res, next) => {
+    User.find({}, function(err, users) {
+        var userMap = {};
+    
+        // users.forEach(function(user) {
+        //   userMap[user._id] = (user);
+        // });
+    
+        res.send(users.latlng);  
+      });
+}
