@@ -6,26 +6,22 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    username: {
+    latitude: {
+        type: String,
+        required: true
+    },
+    longitude: {
         type: String,
         required: true,
     },
-    idade: {
+    genero: {
         type: String,
         required: true,
     },
-    bairro: {
+    birthday: {
         type: String,
         required: true,
-    },
-    rua: {
-        type: String,
-        required: true,
-    },
-    numero: {
-        type: String,
-        required: true,
-    },
+    }
 });
 
 module.exports = mongoose.model(`User`, userSchema);

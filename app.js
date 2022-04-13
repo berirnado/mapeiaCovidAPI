@@ -26,7 +26,7 @@ app.use((error, req, res, next) => {
 })
 
 
-mongoose.connect(`mongodb+srv://macbook:macbook@cluster0.fba8o.mongodb.net/mapcovid`)
+mongoose.connect(`mongodb+srv://bernardo:3XupsSzmz9l6H7wA@cluster0.antjj.mongodb.net/mapcovid`)
 .then(result=> {
     app.listen(8080);
     console.log(`Listening`)

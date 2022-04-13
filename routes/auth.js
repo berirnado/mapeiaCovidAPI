@@ -15,13 +15,7 @@ router.put(`/signup`, [
                     return Promise.reject(`Telefone já utilizado!`);
                 }
             })
-        }),
-    body(`username`)
-        .not()
-        .isEmpty(),
-    body(`idade`)
-        .not()
-        .isEmpty()
+        })
 ],userController.signup);
 
 module.exports = router;

@@ -12,20 +12,21 @@ exports.signup = (req, res, next) => {
         throw error;
     }
     const phone = req.body.phone;
-    const username = req.body.username;
-    const idade = req.body.idade;
-    const bairro = req.body.bairro;
-    const rua = req.body.rua
-    const numero = req.body.numero;
+    const genero = req.body.genderValue
+    const birthday = req.body.birthday
+    const latitude = req.body.latitude
+    const longitude = req.body.longitude
 
+    console.log(latitude)
+    console.log(longitude)
+   
     
     const user = new User({
         phone: phone,
-        username: username,
-        idade: idade,
-        bairro: bairro,
-        rua: rua,
-        numero: numero,
+        latitude: latitude,
+        longitude: longitude,
+        genero: genero,
+        birthday: birthday,
     });
     return user.save()
     .then(result => {
